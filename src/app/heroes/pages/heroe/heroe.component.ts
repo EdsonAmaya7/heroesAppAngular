@@ -10,24 +10,25 @@ import { HeroesService } from '../../services/heroes.service';
   styles: [
   ]
 })
+
 export class HeroeComponent implements OnInit {
   heroe !: Heroe;
-  
-  constructor( 
+
+  constructor(
     private activatedRoute: ActivatedRoute,
     private herieService: HeroesService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params
-    .pipe(
-      switchMap( ({id}): Observable<Heroe> => this.herieService.getHeroe(id))
-    )
-    .subscribe(heroe => { this.heroe = heroe})
+      .pipe(
+        switchMap(({ id }): Observable<Heroe> => this.herieService.getHeroe(id))
+      )
+      .subscribe(heroe => { this.heroe = heroe })
 
 
   }
 
-  
+
 
 }
