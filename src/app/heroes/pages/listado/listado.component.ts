@@ -8,27 +8,25 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './listado.component.html',
   styles: [
     `
-    .flex {
-      display: grid;
-      align-items: center;
-      grid-template-columns: repeat(1,1fr);
-      gap: 15px;
+    img{
+      width: 300px;
+      display: block;
     }
     
      @media (min-width: 450px){
-      .flex {
+      .grid {
         grid-template-columns: repeat(2,1fr);
       }
     }
     
     @media (min-width: 840px){
-      .flex {
+      .grid {
         grid-template-columns: repeat(3,1fr);
       }
     }
     
     @media (min-width: 1110px){
-      .flex {
+      .grid {
         grid-template-columns: repeat(4,1fr);
       }
     } 
