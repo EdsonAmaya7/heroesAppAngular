@@ -1,0 +1,93 @@
+# version: '3'
+
+# services:
+#   heroesApp:
+#     image: node:16.20.2-alpine3.18
+#     container_name: heroesAppTest7
+#     working_dir: /app
+#     ports:
+#       - "4200:4200"
+#     volumes:
+#       - .:/app
+#     command: >
+#       sh -c "npm install -g npm@9.6.7 &&
+#               npm install -g @angular/cli@16.2.2 &&
+#               npm install &&
+#               ng serve --host 0.0.0.0 --disable-host-check"
+
+#     develop:
+#       watch:
+#         - action: sync
+#           path: ./src
+#           target: /app/src
+#           ignore:
+#             - node_modules/
+#             - **/*.spec.ts
+#             - **/*.test.ts
+#         - action: rebuild
+#           path: package.json
+
+version: '3.9'
+
+services:
+  heroesApp:
+    build: .
+    image: node:16.20.2-alpine3.18
+    container_name: heroesAppTest7
+    working_dir: /app
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+    command: >
+      sh -c "npm install -g npm@9.6.7 &&
+              npm install -g @angular/cli@16.2.2 &&
+              npm install &&
+              ng watch --host 0.0.0.0 --disable-host-check"
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /src/app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+
+# version: '3.8'
+
+# services:
+#   heroesApp:
+#     image: node:18.17.1
+#     container_name: heroesAppTest2
+#     working_dir: /app
+#     ports:
+#       - "4200:4200"
+#     volumes:
+#       - .:/app
+#     command: >
+#       sh -c "npm install -g npm@9.6.7 &&
+#               npm install -g @angular/cli@16.2.2 &&
+#               npm install &&
+#               npm install typescript@~4.7.2 --save-dev &&
+#               npm install @angular/router@16.2.2 --save &&
+#               npm install @angular-devkit/build-angular --save-dev &&
+#               ng serve --host 0.0.0.0"
+
+
+# docker container run `
+# --name wcTest `
+# -w /app `
+# -p 4020:4200 `
+# -v ${PWD}:/app `
+# supdashboard-angular
+
+# docker container run \
+#   --name wcTest \
+#   -w /app \
+#   -p 4020:4200 \
+#   -v "$(pwd)":/app \
+#   -v node_modules:/app/node_modules \
+#   supdashboard-angular
+
+# npm install -g @angular/cli@16.2.2
